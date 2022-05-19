@@ -26,13 +26,13 @@ export const Contact = () => {
                 <img className="contact__image" src="/images/imgs/item5.png" alt="user" />
                 <div className="services__box-1">
                     <p className="title">Keep in touch</p>
-                    <p className="plainText">Leave me a message and i'll contact as soon as posible</p>
+                    <p className="plainText">Leave me a message and i&apos;ll contact as soon as posible</p>
                 </div>
-                <a className="goToForm" onClick={ handleGoToForm }>LET'S CHAT</a>
+                <a className="goToForm" onClick={ handleGoToForm }>LET&apos;S CHAT</a>
             </div>
             <ContactForm refForm={ refForm } formAnim={ formAnim } Classes={ Classes } setClasses={ setClasses } />
             <div className="contact__social">
-                <a target="_blank" href="https://github.com/Jopt05"><i className='social bx bxl-github'></i></a>
+                <a target="_blank" rel="noreferrer" href="https://github.com/Jopt05"><i className='social bx bxl-github'></i></a>
             </div>
         </div>
         </VisibilitySensor>

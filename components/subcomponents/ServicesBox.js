@@ -10,12 +10,12 @@ const ServicesBox = ({ icon, subtitle, plainText, technologies, url }) => {
             <p className="work__technologies">Tools:</p>
             <div className="work__technologies-div">
                 {
-                    technologies.map((technologie) => 
-                        <i className={`bx bxl-${technologie}`} ></i>
+                    technologies.map((technologie, index) => 
+                        <i key={index} className={`bx bxl-${technologie}`} ></i>
                     )
                 }
             </div>
-            <a target="_blank" href={url}>
+            <a target="_blank" rel="noreferrer" href={url}>
                 <div className="link__container">
                     <p className="link__text">
                     GO TO

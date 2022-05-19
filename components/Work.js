@@ -99,6 +99,7 @@ export const Work = () => {
                 {
                     work.length > 0 && work.map((ITEM, INDEX) => (
                         <ServicesBox  
+                            key={INDEX}
                             icon={getTopic(ITEM.project_topic)} 
                             subtitle={ITEM.project_name} 
                             plainText={ITEM.project_description} 

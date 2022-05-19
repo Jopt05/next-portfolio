@@ -42,7 +42,7 @@ export const Services = () => {
             }
             {
                 services.length > 0 && services.map((ITEM, INDEX) => (
-                    <div className={ `services__box ${INDEX % 2 == 0 ? 'margin1' : 'margin3'} container ` + state.nameClass }>
+                    <div key={INDEX} className={ `services__box ${INDEX % 2 == 0 ? 'margin1' : 'margin3'} container ` + state.nameClass }>
                         <div className="services__box-1">
                             <i className={`icon bx ${ITEM.service_topic == 0 ? 'bx-devices' : 'bx-code-alt'}`}></i>
                             <p className="subtitle">{ ITEM.service_name }</p>
