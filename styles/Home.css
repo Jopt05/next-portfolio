@@ -1,0 +1,460 @@
+.margin {
+	margin: 40px 15%;
+}
+
+.margin1{
+	margin: 40px 10% 40px 20%;
+}
+
+.margin2 {
+	margin: 40px 20%;
+}
+
+.margin3 {
+	margin: 40px 20% 40px 10%;
+}
+
+.title {
+	margin-bottom: 30px;
+	font-size: 60px;
+	position: relative;
+}
+
+.subtitle {
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+
+.plainText {
+	margin-bottom: 10px;
+	line-height: 1.5;
+	color: #5c5b66;
+	width: 80%;
+}
+
+.work__technologies {
+	color: #5c5b66;
+	margin-bottom: 10px;
+	font-size: .9rem;
+}
+
+.marker {
+	position: absolute;
+	right: 0;
+	top: 100px;
+	transform: rotate(90deg);
+	margin-bottom: 0;
+}
+
+.icon {
+	align-self: flex-start;
+	margin-bottom: 30px;
+	padding: 15px;
+	background-color: #D7F2FA;
+	font-size: 2rem;
+	border-radius: 50%;
+}
+
+.container {
+	padding: 5% 8%;
+	background: #FCF8F6;
+	border-radius: 15px;
+}
+
+.header__logo {
+	height: 50px;
+	width: 50px;
+	object-fit: contain;
+}
+
+.hero {
+	display: flex;
+}
+
+.hero__text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-right: 10%;
+}
+
+.hero__image{
+	width: 350px;
+	height: 400px;
+	object-fit: contain;
+}
+
+.services {
+	position: relative;
+}
+
+.work__div {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.work__div .container {
+	display: flex;
+	width: 300px;
+	flex-direction: column;
+	align-items: center;
+	padding: 5% 3%;
+	margin: 0px 0px 20px 0px;
+}
+
+.work__div .container .plainText {
+	text-align: center;
+}
+
+.work__div .icon {
+	align-self: center;
+}
+
+.work__div .container a {
+	margin: 10px 0px 0px 0px;
+	align-self: center;
+}
+
+.work__technologies-div {
+	display: flex;
+}
+
+
+.link__container {
+	position: relative;
+  }
+  
+.link__text {
+	position: relative;
+	transition: all .5s ease-in-out;
+}
+
+.link__icon {
+	font-size: 1rem;
+	position: absolute;
+	transition: all .5s ease-in-out;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 0;
+}
+
+a:hover .link__icon {
+	animation: getIn .5s ease-in-out forwards;
+}
+
+a:hover .link__text {
+	animation: getOut .5s ease-in-out forwards;
+}
+
+.bxl-html5 {
+	color: #e34f26;
+}
+
+.bxl-javascript {
+	color: #f7df1e;
+}
+
+.bxl-python {
+	color: #4584b6;
+}
+
+.bxl-css3 {
+	color:#00a4e4;
+}
+
+.bxl-react {
+	color: #61DBFB;
+}
+
+.bxl-nodejs {
+	color: #1dd965;
+}
+
+.bxl-mongodb {
+	color: #176b37;
+}
+
+.services__box {
+	display: flex;
+	align-items: center;
+	position: relative;
+	transform: translateX(-200%);
+}
+
+.services .loader {
+	display: block;
+    margin: 0 auto;
+}
+
+.services__box-1 {
+	display: flex;
+	flex-direction: column;
+}
+
+.services__box .imgS {
+	width: 250px;
+	height: 250px;
+	object-fit: contain;
+	margin-left: auto;
+}
+
+.inverted .imgS {
+	order: 1;
+	margin-left: 0;
+}
+
+.inverted .services__box-1 {
+	order: 2;
+	margin-left: auto;
+}
+
+.contact {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.form__box {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	transform: translateX(-200%);
+	transition: all .5s ease-in-out;
+}
+
+.form__box-moved {
+	position: relative;
+	transform: translate(0%);
+}
+
+.form__box-back {
+	position: relative;
+	transform: translateX(-200%);
+}
+
+.form__box label {
+	margin-bottom: 10px;
+}
+
+.form__box input {
+	border: none;
+}
+
+.form__box textarea, .form__box input {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: none;
+	transition: all .2s ease-in-out;
+}
+
+.form__box textarea:focus, .form__box input:focus {
+	outline: none;
+	border-bottom: 2px solid #EE5A41;
+}
+
+.form__box button {
+	position: relative;
+	align-self: center;
+	padding: 10px 30px;
+	border-radius: 25px;
+	background-color: #EE5A41;
+	color: white;
+	transition: all .3s ease-in-out;
+	border: none;
+	cursor: pointer;
+}
+
+.form__box button:hover {
+	background-color: #d53013;
+}
+
+.contact__image {
+	position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 150px;
+    object-fit: contain;
+    background-color: transparent;
+    transform: translateY(-65%);
+}
+
+.contact .services__box a {
+	align-self: center;
+	margin-left: auto;
+}
+
+.contact .services__box {
+	margin-bottom: 50px;
+}
+
+.contact__social {
+	display: flex;
+	justify-content: center;
+	margin: 40px 0px;
+}
+
+.contact__social a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	border-radius: 50%;
+	font-size: 2rem;
+	margin-right: 2%;
+}
+
+.attribution {
+	display: block;
+	font-size: 14px;
+	text-align: center;
+	margin: 20px 0px;
+}
+
+.solid {
+	position: relative;
+}
+
+.errorMessage {
+	font-weight: 600;
+	color: #d53013;
+	text-align: center;
+	margin: 10px 0px;
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 500px){
+	.margin {
+		margin: 40px 10%;
+	}
+
+	.margin1 {
+		margin: 40px 5% 40px 15%;
+	}
+	
+	.margin2 {
+		margin: 40px 15%;
+	}
+	
+	.margin3 {
+		margin: 40px 15% 40px 5%;
+	}	
+
+	.container {
+		padding: 4% 6%;
+	}
+}
+
+@media only screen and (max-width: 500px){
+	.margin,
+	.margin1,
+	.margin2,
+	.margin3 {
+		margin: 40px 10%;
+	}
+
+	.services{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.services__box,
+	.hero {
+		flex-direction: column;
+	}
+
+	.hero__text {
+		padding-right: 0;
+		margin-bottom: 20px;
+	}
+
+	.work .title {
+		display: block;
+	}
+
+	.plainText {
+		width: 100%;
+	}
+
+	.hero__image{
+		width: 200px;
+		height: 200px;
+		object-fit: contain;
+	}
+
+	.inverted img {
+		margin-bottom: 30px;
+	}
+
+	.services__box,
+	.hero,
+	.services__box-1 {
+		align-items: center;
+	}
+
+	.services__box .imgS {
+		width: 200px;
+		height: 200px;
+		object-fit: contain;
+		margin-left: 0;
+	}
+
+	.icon {
+		align-self: center;
+	}
+
+	.contact .services__box a {
+		align-self: center;
+		margin-left: 0;
+	}
+
+	.container {
+		padding: 8% 8%;
+	}
+
+	.contact__social {
+		display: flex;
+		justify-content: space-between;
+		margin: 40px 8%;
+	}
+
+	.marker {
+		right: -10%;
+	}
+	
+	.work__div .container {
+		width: 100%;
+		padding: 5% 3%;
+		margin: 0px 0px 20px 0px;
+	}
+}
+
+@media only screen and (max-width: 400px){
+	.container {
+		padding: 12% 8%;
+	}
+}
+
+@keyframes getIn {
+	from {
+		opacity: 0;
+		top: 100%;
+	}
+
+	to {
+		top: 0;
+		opacity: 1;
+	}
+}
+
+@keyframes getOut {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+}

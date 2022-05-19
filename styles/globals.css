@@ -1,16 +1,75 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+:root{
+	--BgContainer: #EDE8FF;
+	--BodyBg: #E8E5CA;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background: #FCF5EF;
+	scroll-behavior: smooth;
 }
 
 * {
-  box-sizing: border-box;
+	font-family: 'Rubik', sans-serif;
+}
+
+p,
+h1 {
+	display: inline-block;
+	margin: 0;
+}
+
+h1 {
+	line-height: .9;
+}
+
+a {
+	position: relative;
+	align-self: flex-start;
+	text-decoration: none;
+	padding: 10px 30px;
+	border-radius: 25px;
+	background-color: #EE5A41;
+	color: white;
+	transition: all .3s ease-in-out;
+	cursor: pointer;
+}
+
+a:hover {
+	background-color: #d53013;
+}
+
+header {
+	display: flex;
+	align-items: center;
+}
+
+header p {
+	margin-left: 20%;
+}
+
+textarea {
+	resize: none;
+}
+
+@media only screen and (max-width: 500px) {
+	header {
+		justify-content: center;
+	}
+
+	header p {
+		display: none;
+	}
+
+	h1, p {
+		text-align: center;
+	}
+
+	a {
+		align-self: center;
+	}
 }
