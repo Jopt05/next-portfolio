@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ServicesBox = ({ icon, subtitle, plainText, technologies, url }) => {
-    console.log(technologies)
     return (
         <div className="container">
             <i className={`icon bx ${ icon }`}></i>

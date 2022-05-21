@@ -13,7 +13,7 @@ export const Work = () => {
         :)
          */
         let techs = listOfTechs.map((item) => {
-            switch (item.id) {
+            switch (item) {
                 case 1:
                     return 'react'
                 
@@ -80,6 +80,7 @@ export const Work = () => {
             .then((response) => {
                 if(response.projects) {
                     setWork(response.projects)
+                    console.log(response)
                     setIsLoading(false);
                     return;
                 }
