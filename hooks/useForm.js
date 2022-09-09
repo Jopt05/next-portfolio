@@ -20,10 +20,13 @@ export const useForm = () => {
 
         if( form.name.length <= 4 ) {
             setForm({ ...form, errors: [ ...form.errors, "Insert a valid name!"] })
+            return
         } else if ( form.email.length <= 6 || !form.email.includes("@") || !form.email.includes(".") ) {
             setForm({ ...form, errors: [ ...form.errors, "Insert a valid email!"] })
+            return
         } else if ( form.message.length <= 5 ) {
             setForm({ ...form, errors: [ ...form.errors, "So... what was your message?"] })
+            return
         } else {
             setForm({ ...form, errors: [] })
         }
