@@ -15,18 +15,24 @@ export const Services = () => {
         fetch(`${url}/api/services/`)
             .then((response) => response.json())
             .then((response) => {
+
                 if (response.services) {
                     setServices(response.services);
                     setIsLoading(false);
                     return;
                 } 
+
                 setServices([]);
             })
+            
             .catch((err) => console.log(err))
+
     }, [])
 
     const handleChange = (isVisible) => {
-        isVisible ? setState({ nameClass: 'animate__animated animate__bounceInLeft' }) : console.log("")
+        isVisible 
+            ? setState({ nameClass: 'animate__animated animate__bounceInLeft' }) 
+            : console.log("There was a problem in handleChange")
     }
 
     return (

@@ -415,7 +415,7 @@ a:hover .link__text {
 
 	.contact__social {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		margin: 40px 8%;
 	}
 

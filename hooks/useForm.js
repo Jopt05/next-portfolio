@@ -16,24 +16,31 @@ export const useForm = () => {
     const handleSubmit = async(event, Classes, setClasses) => {
         event.preventDefault();
 
-        setIsLoading(true);
+        let listOfErrors = [];
 
-        if( form.name.length <= 4 ) {
-            setForm({ ...form, errors: [ ...form.errors, "Insert a valid name!"] })
-            return
-        } else if ( form.email.length <= 6 || !form.email.includes("@") || !form.email.includes(".") ) {
-            setForm({ ...form, errors: [ ...form.errors, "Insert a valid email!"] })
-            return
-        } else if ( form.message.length <= 5 ) {
-            setForm({ ...form, errors: [ ...form.errors, "So... what was your message?"] })
-            return
-        } else {
-            setForm({ ...form, errors: [] })
+        const { name, email, message, errors } = form;
+
+        if(name.length <= 4) listOfErrors.push("Insert a valid name");
+
+        if(
+            email.length <= 6 ||
+            !email.includes("@") ||
+            !email.includes(".")
+        ) {
+            listOfErrors.push("Insert a valid email!")
         }
 
-        if( form.errors.length < 0 ) {
+        if(message.length <= 5) listOfErrors.push("Message should be bigger than 5 chars");
+
+        if(listOfErrors.length > 0){
+            setForm({
+                ...form,
+                errors: listOfErrors
+            });
             return;
-        }
+        };
+
+        setIsLoading(true);
 
         let answer = await axios({
             method: 'post',
@@ -47,9 +54,17 @@ export const useForm = () => {
         } );
 
         if( answer?.ok ) {
-            Swal.fire({ icon: 'success', title: 'Success!', text: 'Message sent, I will contact you asap!' })
+            Swal.fire({ 
+                icon: 'success', 
+                title: 'Success!', 
+                text: 'Message sent, I will contact you asap!' 
+            })
         } else {
-            Swal.fire({ icon: 'error',title: 'Error!', text: 'Something went wrong, please try again!' })
+            Swal.fire({ 
+                icon: 'error',
+                title: 'Error!', 
+                text: 'Something went wrong, please try again!' 
+            })
         }
 
         setClasses({ ...Classes, formAnim: 'form__box-back' });
