@@ -7,16 +7,16 @@ export function getTopic(integer) {
     // 2 - Web - bx-desktop
     // 3 - API - bxs-cloud-download
     switch (integer) {
-        case "0":
+        case 0:
             return 'bxs-game'
         
-        case "1":
+        case 1:
             return 'bx-code-alt'
 
-        case "2":
+        case 2:
             return 'bx-desktop'
         
-        case "3":
+        case 3:
             return 'bxs-cloud-download'
     
         default:

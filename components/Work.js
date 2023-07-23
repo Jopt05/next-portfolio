@@ -12,7 +12,7 @@ export const Work = () => {
     useEffect(() => {
         let url = process.env.NEXT_PUBLIC_API_URL;
 
-        fetch(`${url}/api/projects/`)
+        fetch(`${url}/api/proyectos`)
             .then((response) => response.json())
             .then((response) => {
 
@@ -44,7 +44,7 @@ export const Work = () => {
                             icon={getTopic(ITEM.project_topic)} 
                             subtitle={ITEM.project_name} 
                             plainText={ITEM.project_description} 
-                            technologies={getStack(ITEM.project_technologies)} 
+                            technologies={ITEM.project_tecnologies.map((item)=>item.tech_name)} 
                             url={ITEM.project_url} 
                         />
                     ))

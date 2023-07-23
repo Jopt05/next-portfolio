@@ -12,7 +12,7 @@ export const Services = () => {
     useEffect(() => {
         let url = process.env.NEXT_PUBLIC_API_URL;
 
-        fetch(`${url}/api/services/`)
+        fetch(`${url}/api/servicios`)
             .then((response) => response.json())
             .then((response) => {
 
