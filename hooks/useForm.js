@@ -44,7 +44,7 @@ export const useForm = () => {
 
         let answer = await axios({
             method: 'post',
-            url: `${process.env.NEXT_PUBLIC_API_URL}/api/emails/`,
+            url: `${process.env.NEXT_PUBLIC_API_URL}/api/mail`,
             headers: { 'content-type': 'application/json' },
             data: form
         })
