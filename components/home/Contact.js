@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
-import { useClass } from '../hooks/useClass'
-import { ContactForm } from './subcomponents/ContactForm'
+import { useClass } from '../../hooks/useClass'
+import { ContactForm } from '../subcomponents/home/ContactForm'
 
 export const Contact = () => {
 

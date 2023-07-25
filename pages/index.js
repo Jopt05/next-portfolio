@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import { Contact } from '../components/Contact';
-import { Header } from '../components/Header'
-import { Hero } from '../components/Hero';
-import { Services } from '../components/Services'
-import { Work } from '../components/Work';
+import { Contact } from '../components/home/Contact';
+import { Header } from '../components/home/Header'
+import { Hero } from '../components/home/Hero';
+import { Services } from '../components/home/Services'
+import { Work } from '../components/home/Work';
 
 export default function Home() {
   return (

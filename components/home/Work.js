@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { getTopic } from '../utilities/functions';
-import { getStack } from '../utilities/getStack';
-import ServicesBox from './subcomponents/ServicesBox';
+import { getTopic } from '../../utilities/functions';
+import ServicesBox from '../subcomponents/home/ServicesBox';
 
 export const Work = () => {
 
