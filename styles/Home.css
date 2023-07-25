@@ -176,6 +176,14 @@ a:hover .link__text {
 	color: #176b37;
 }
 
+.bxl-flutter {
+	color: #2e2c99;
+}
+
+.bxl-django {
+	color: #0c7a2d;
+}
+
 .services__box {
 	display: flex;
 	align-items: center;

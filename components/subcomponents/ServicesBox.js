@@ -10,7 +10,7 @@ const ServicesBox = ({ icon, subtitle, plainText, technologies, url }) => {
             <div className="work__technologies-div">
                 {
                     technologies.map((technologie, index) => 
-                        <i key={index} className={`bx bxl-${technologie}`} ></i>
+                        <i key={index} className={`${technologie}`} ></i>
                     )
                 }
             </div>
