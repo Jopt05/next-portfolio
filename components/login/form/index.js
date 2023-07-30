@@ -38,6 +38,9 @@ export const Form = () => {
                     setSuccessfull(true);
                 } else {
                     setErrors(response.errors.map((element) => element.msg));
+                    if (errors.length == 0) {
+                        setErrors(response.msg);
+                    }
                     setSuccessfull(false);
                 }
                 setIsLoading(false);
