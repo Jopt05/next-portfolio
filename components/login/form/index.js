@@ -33,14 +33,27 @@ export const Form = () => {
             .then((response) => response.json())
             .then((response) => {
                 console.log(response);
+                setIsLoading(false);
 
                 if (response.token) {
                     setSuccessfull(true);
-                } else {
+                    localStorage.setItem('token', response.token);
+                }
+
+                if (response.errors) {
                     setErrors(response.errors.map((element) => element.msg));
                     setSuccessfull(false);
+                    return
                 }
-                setIsLoading(false);
+
+                if (response.msg) {
+                    setErrors([
+                        msg
+                    ]);
+                    setSuccessfull(false);
+                }
+
+                setErrors([]);
             })
             
             .catch((err) => {
