@@ -50,11 +50,17 @@
     margin-top: 25px;
 	padding: 10px 30px;
 	border-radius: 25px;
-	background-color: #EE5A41;
 	color: white;
-	transition: all .3s ease-in-out;
 	border: none;
 	cursor: pointer;
+	background-color: #EE5A41;
+    transition: all .2s ease-in-out;
+}
+
+.container__form_button_deactivated {
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .loaderdiv {
@@ -67,20 +73,19 @@
     height: 0px;
     width: 90px;
     object-fit: contain;
+    transition: height .2s ease-in-out;
 }
 
 .loaderdiv__svg_activated {
-    width: 90px;
     height: 80px;
-    object-fit: contain;
 }
 
 .errorsdiv {
     display: flex;
     flex-direction: column;
     padding: 10px 0px 10px 0px;
-    opacity: 0;
-    transition: opacity .2s ease-in-out;
+    height: 0;
+    transition: height .2s ease-in-out;
 }
 
 .errorsdiv__text {
@@ -89,7 +94,7 @@
 }
 
 .errorsdiv__activated {
-    opacity: 1;
+    height: auto;
 }
 
 @media only screen and (max-width: 550px) {
