@@ -6,6 +6,7 @@ export const Form = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState([]);
+    const [successfull, setSuccessfull] = useState(false);
 
     function handleChange(e) {
         setForm({
@@ -34,14 +35,21 @@ export const Form = () => {
                 console.log(response);
 
                 if (response.token) {
-                    console.log("Cargado")
+                    setSuccessfull(true);
                 } else {
                     setErrors(response.errors.map((element) => element.msg));
+                    setSuccessfull(false);
                 }
                 setIsLoading(false);
             })
             
-            .catch((err) => console.log(err))
+            .catch((err) => {
+                console.log(err);
+                setIsLoading(false);
+                setErrors([
+                    'Hubo un error al realizar la request'
+                ])
+            })
     }
 
     return (
@@ -75,8 +83,9 @@ export const Form = () => {
                 </div>
                 <button 
                     className={`${styles.container__form_button} ${isLoading && styles.container__form_button_deactivated}`}
+                    disabled={successfull}
                 >
-                    Enviar
+                    { successfull ? 'Cargado!' : 'Enviar' }
                 </button>
                 <div className={styles.loaderdiv}>
                     <img 
