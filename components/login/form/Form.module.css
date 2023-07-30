@@ -83,9 +83,9 @@
 .errorsdiv {
     display: flex;
     flex-direction: column;
-    padding: 10px 0px 10px 0px;
+    padding: 0px;
     height: 0;
-    transition: height .2s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 .errorsdiv__text {
@@ -95,6 +95,7 @@
 
 .errorsdiv__activated {
     height: auto;
+    padding: 10px 0px 10px 0px;
 }
 
 @media only screen and (max-width: 550px) {

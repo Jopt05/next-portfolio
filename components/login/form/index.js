@@ -87,9 +87,9 @@ export const Form = () => {
                 <div 
                     className={`${styles.errorsdiv} ${errors.length > 0 && styles.errorsdiv__activated}`}
                 >
-                    <p className={styles.errorsdiv__text}>
+                    {<p className={styles.errorsdiv__text}>
                         Error de prueba
-                    </p>
+                    </p>}
                 </div>
             </form>
         </div>
