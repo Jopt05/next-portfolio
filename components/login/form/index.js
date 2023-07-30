@@ -88,8 +88,8 @@ export const Form = () => {
                     className={`${styles.errorsdiv} ${errors.length > 0 && styles.errorsdiv__activated}`}
                 >
                     {
-                        errors.map((error) => (
-                            <p className={styles.errorsdiv__text}>
+                        errors.map((error, index) => (
+                            <p key={index} className={styles.errorsdiv__text}>
                                 {error}
                             </p>
                         ))
