@@ -21,7 +21,13 @@ export const Form = ({
                 </p>
                 <div className={styles.container__body_form}>
                     {
-                        
+                        Object.keys(schema).map((key) => (
+                            <label className={styles.container__body_form_label}>
+                                {schema[key].label}
+                            </label>
+                            
+                            {typeof(schema[key].tipo) == "string" && <input type='text' name={}/>}
+                        ))
                     }
                 </div>
             </div>
