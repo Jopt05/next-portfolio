@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import styles from './Form.module.css'
+import React, {useState, useEffect, useContext} from 'react';
+import styles from './Form.module.css';
+import { createdContext } from '../../../../hoc/createContext';
 
 export const Form = ({
     title,
@@ -7,6 +8,45 @@ export const Form = ({
     element,
     schema
 }) => {
+
+    const { technologies } = useContext(createdContext);
+
+    const [information, setInformation] = useState({});
+
+    function handleChange(e) {
+        setInformation({
+            ...information,
+            [e.target.name]: e.target.value
+        })
+    };
+
+    function handleSelect(e) {
+        let options = e.target.options;
+        for( const index in options ) {
+            if( options[index].selected ) {
+                setInformation({
+                    ...information,
+                    [information.project_tecnologies]: [
+                        ...information.project_tecnologies,
+                        options[i].value
+                    ]
+                })
+            }
+        }
+    };
+
+    useEffect(() => {
+        if( element == {} ) {
+            setInformation(
+                schema
+            );
+            return;
+        }
+
+        setInformation(
+            element
+        );
+    }, [schema, element])
 
     return (
         <div className={styles.container}>
@@ -21,12 +61,46 @@ export const Form = ({
                 </p>
                 <div className={styles.container__body_form}>
                     {
-                        Object.keys(schema).map((key) => (
-                            <label className={styles.container__body_form_label}>
-                                {schema[key].label}
-                            </label>
-                            
-                            {typeof(schema[key].tipo) == "string" && <input type='text' name={}/>}
+                        mainState == true && Object.keys(schema).map((key, index) => (
+                            <div key={index} className={styles.container__body_form_element}>
+                                <label className={styles.container__body_form_label}>
+                                    {schema[key].label}
+                                </label>
+
+                                {
+                                    (schema[key].tipo == "array" && information.project_tecnologies) && 
+                                    <select 
+                                        name={key} 
+                                        onChange={handleSelect}
+                                        multiple
+                                    >
+                                        { 
+                                            technologies.map(element => (
+                                                <option 
+                                                    selected={
+                                                        information.project_tecnologies.some(tech => tech.tech_name == element.tech_name)
+                                                    } 
+                                                    value={element._id}
+                                                    >
+                                                        {element.tech_name}
+                                                    
+                                                </option>
+                                            ))
+                                        }    
+                                    </select>
+                                }
+                                
+                                {
+                                    schema[key].tipo != "array" && <input 
+                                        className={styles.container__body_form_input}
+                                        type={schema[key].tipo} 
+                                        name={key}
+                                        onChange={(e) => handleChange(e)}
+                                        value={information[key]}
+                                        checked={information[key]}
+                                    />
+                                }
+                            </div>
                         ))
                     }
                 </div>

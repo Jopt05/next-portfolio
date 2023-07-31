@@ -66,7 +66,8 @@ export default function Administration() {
           workingElement,
           setWorkingElement,
           schema,
-          setSchema
+          setSchema,
+          technologies
         }}
       >
         <Header

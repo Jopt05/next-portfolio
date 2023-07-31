@@ -24,69 +24,74 @@ export const Picker = ({data, name, title}) => {
         "project_name": {
             "project_name": {
                 "label": "Nombre del Proyecto:",
-                "tipo": ""
+                "tipo": "text"
             },
             "project_description": {
                 "label": "Descripción del proyecto:",
-                "tipo": ""
+                "tipo": "text"
             },
             "project_tecnologies": {
                 "label": "Tecnologías usadas:",
-                "tipo": [],
+                "tipo": "array",
                 "extras": [
                     "tecnologia"
                 ]
             },
             "project_topic": {
                 "label": "Tema del proyecto:",
-                "tipo": 1,
-                
+                "tipo": "text",
+                "extras": [
+                    "int"
+                ]
             },
             "project_url": {
                 "label": "Url del proyecto:",
-                "tipo": ""
+                "tipo": "text"
             },
             "project_state": {
                 "label": "Está activo:",
-                "tipo": true
+                "tipo": "checkbox"
             },
         },
         "service_name": {
             "service_name": {
                 "label": "Nombre del servicio:",
-                "tipo": ""
+                "tipo": "text"
             },
             "service_description": {
                 "label": "Descripción del servicio:",
-                "tipo": ""
+                "tipo": "text"
             },
             "service_topic": {
                 "label": "Tema del servicio",
-                "tipo": ""
+                "tipo": "text",
+                "extras": [
+                    "int"
+                ]
             },
             "service_image": {
                 "label": "Imagen:",
-                "tipo": "",
+                "tipo": "text",
                 "extras": [
                     "imagen"
                 ]
             },
             "service_state": {
                 "label": "Está activo:",
-                "tipo": true
+                "tipo": "checkbox"
             }
         },
         "tech_name": {
             "tech_name": {
                 "label": "Nombre de la tecnología (Boxicons):",
-                "tipo": "",
+                "tipo": "text",
                 "extras": [
                     "icono"
                 ]
             },
             "tech_state": {
                 "label": "Está activo:",
-                "tipo": true
+                "tipo": "checkbox"
             }
         }
     }
