@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './Form.module.css'
+import { useRouter } from 'next/router';
 
 export const Form = () => {
+
+    const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false);
     const [form, setForm] = useState({});
@@ -38,6 +41,7 @@ export const Form = () => {
                 if (response.token) {
                     setSuccessfull(true);
                     localStorage.setItem('token', response.token);
+                    router.push('/administration');
                 }
 
                 if (response.errors) {

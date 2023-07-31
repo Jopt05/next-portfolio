@@ -1,0 +1,45 @@
+.metrics__container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 300px;
+    padding: 20px 20px;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.metrics__container_toprow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.metrics__container_bottomrow {
+    display: flex;
+    margin-top: 10px;
+}
+
+.metrics__container_counter {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.metrics__container_icon {
+    font-size: 24px;
+}
+
+.metrics__container_loader {
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+}
+
+@media only screen and (max-width: 550px) {
+    .metrics__container_toprow,
+    .metrics__container_bottomrow {
+        justify-content: center;
+    }
+
+    .metrics__container {
+        width: auto;
+    }
+}
