@@ -107,7 +107,7 @@ export const Form = ({
     useEffect(() => {
         const token = localStorage.getItem("token");
 
-        if ( token == null ) router.push("/login");
+        if ( token == null ) router.push("/administration/login");
 
         fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/api/usuarios/auth`,{
