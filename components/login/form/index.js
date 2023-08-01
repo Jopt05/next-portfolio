@@ -42,6 +42,7 @@ export const Form = () => {
                     setSuccessfull(true);
                     localStorage.setItem('token', response.token);
                     router.push('/administration');
+                    return
                 }
 
                 if (response.errors) {
