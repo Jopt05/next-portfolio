@@ -21,18 +21,28 @@ export const Form = ({
     };
 
     function handleSelect(e) {
-        let options = e.target.options;
-        for( const index in options ) {
-            if( options[index].selected ) {
-                setInformation({
-                    ...information,
-                    [information.project_tecnologies]: [
-                        ...information.project_tecnologies,
-                        options[i].value
-                    ]
-                })
-            }
+        let actualOptions = information.project_tecnologies;
+        let index = null;
+        if ( actualOptions.some(element => element.tech_name == e.tech_name) ) {
+            actualOptions = actualOptions.filter(el => el.tech_name != e.tech_name);
+        } else {
+            actualOptions.push(e);
         }
+
+        setInformation({
+            ...information,
+            project_tecnologies: actualOptions
+        })
+
+        // for( const index in options ) {
+        //     if( options[index].selected ) {
+        //         actualOptions.push(technologies.filter((element) => element._id == options[index].value)[0]);
+        //         setInformation({
+        //             ...information,
+        //             project_tecnologies: actualOptions
+        //         })
+        //     }
+        // }
     };
 
     useEffect(() => {
@@ -46,7 +56,7 @@ export const Form = ({
         setInformation(
             element
         );
-    }, [schema, element])
+    }, [schema])
 
     return (
         <div className={styles.container}>
@@ -71,19 +81,17 @@ export const Form = ({
                                     (schema[key].tipo == "array" && information.project_tecnologies) && 
                                     <select 
                                         name={key} 
-                                        onChange={handleSelect}
                                         multiple
                                     >
-                                        { 
+                                        {
                                             technologies.map(element => (
-                                                <option 
-                                                    selected={
-                                                        information.project_tecnologies.some(tech => tech.tech_name == element.tech_name)
-                                                    } 
+                                                <option
+                                                    className={`${styles.container__body_form_option} ${information.project_tecnologies
+                                                        .some((tech_el) => tech_el.tech_name == element.tech_name) && styles.container__body_form_option_selected}`}
                                                     value={element._id}
+                                                    onClick={() => handleSelect(element)}
                                                     >
                                                         {element.tech_name}
-                                                    
                                                 </option>
                                             ))
                                         }    
