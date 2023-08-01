@@ -9,20 +9,78 @@ export const Form = ({
     schema
 }) => {
 
-    const { technologies } = useContext(createdContext);
+    const { technologies, setIsCreating, setIsEditing } = useContext(createdContext);
 
     const [information, setInformation] = useState({});
+    const [errors, setErrors] = useState([])
+    const [isLoading, setIsLoading] = useState(false);
 
     function handleChange(e) {
+        if( e.target.type == 'checkbox' ) {
+            setInformation({
+                ...information,
+                [e.target.name]: e.target.checked
+            })    
+            return
+        }
+
         setInformation({
             ...information,
             [e.target.name]: e.target.value
         })
     };
 
+    function handleCancel(e) {
+
+        setInformation({});
+        setIsCreating(false);
+        setIsEditing(false);
+        setErrors([]);
+
+    };
+
+    function handleAction(e) {
+        setIsLoading(true);
+        const first_key = Object.keys(schema)[0];
+        let data = information;
+        if( data?.project_tecnologies ) {
+            data.project_tecnologies = data.project_tecnologies.map((element) => element._id);
+        }
+        const categorie = {
+            "project_name": "proyectos",
+            "service_name": "servicios",
+            "tech_name": "tecnologias"
+        };
+        const id = data._id;
+        let endpoint = title == "Editar" ? `/api/${categorie[first_key]}/${id}` : `/api/${categorie[first_key]}`
+
+        console.log({data})
+        fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}${endpoint}`, {
+                method: title == "Editar" ? 'PUT' : 'POST',
+                body: JSON.stringify(
+                    data
+                ),
+                headers: { "Content-Type": "application/json" },
+            }
+        ).then(response => response.json())
+        .then(response => {
+
+            if( response.errors ) {
+                setErrors(response.errors.map(element => element.msg));
+            };
+
+            console.log(response);
+            setIsLoading(false);
+        })
+        .catch(err => console.log(err));
+    };
+
     function handleSelect(e) {
-        let actualOptions = information.project_tecnologies;
-        let index = null;
+        let actualOptions = [];
+        if ( information.project_tecnologies != null ) {
+            actualOptions = information.project_tecnologies;
+        }
         if ( actualOptions.some(element => element.tech_name == e.tech_name) ) {
             actualOptions = actualOptions.filter(el => el.tech_name != e.tech_name);
         } else {
@@ -33,19 +91,11 @@ export const Form = ({
             ...information,
             project_tecnologies: actualOptions
         })
-
-        // for( const index in options ) {
-        //     if( options[index].selected ) {
-        //         actualOptions.push(technologies.filter((element) => element._id == options[index].value)[0]);
-        //         setInformation({
-        //             ...information,
-        //             project_tecnologies: actualOptions
-        //         })
-        //     }
-        // }
-    };
+    }
 
     useEffect(() => {
+        if ( element == {} & schema == {} ) return;
+
         if( element == {} ) {
             setInformation(
                 schema
@@ -78,7 +128,7 @@ export const Form = ({
                                 </label>
 
                                 {
-                                    (schema[key].tipo == "array" && information.project_tecnologies) && 
+                                    (schema[key].tipo == "array") && 
                                     <select 
                                         name={key} 
                                         multiple
@@ -86,8 +136,11 @@ export const Form = ({
                                         {
                                             technologies.map(element => (
                                                 <option
-                                                    className={`${styles.container__body_form_option} ${information.project_tecnologies
-                                                        .some((tech_el) => tech_el.tech_name == element.tech_name) && styles.container__body_form_option_selected}`}
+                                                    className={
+                                                        `
+                                                        ${styles.container__body_form_option} ${(information.project_tecnologies != null && information.project_tecnologies
+                                                        .some((tech_el) => tech_el.tech_name == element.tech_name)) && styles.container__body_form_option_selected}
+                                                        `}
                                                     value={element._id}
                                                     onClick={() => handleSelect(element)}
                                                     >
@@ -113,6 +166,29 @@ export const Form = ({
                     }
                 </div>
             </div>
+            <div className={styles.container__errors}>
+                    {
+                        errors.length > 0 
+                        && errors.map(element => <p className={styles.container__errors_error}>{element}</p>)
+                    }
+            </div>
+            {
+                mainState == true && 
+                <div className={styles.container__actions}>
+                        <button
+                            className={styles.container__actions_second}
+                            onClick={handleCancel}
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            className={styles.container__actions_button}
+                            onClick={handleAction}
+                        >   
+                            { title == "Editar" ? "Actualizar" : "Crear"}
+                        </button>
+                </div>
+            }
         </div>
     )
 }

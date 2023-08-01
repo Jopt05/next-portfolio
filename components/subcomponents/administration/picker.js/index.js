@@ -89,7 +89,7 @@ export const Picker = ({data, name, title}) => {
                     "icono"
                 ]
             },
-            "tech_state": {
+            "state": {
                 "label": "Está activo:",
                 "tipo": "checkbox"
             }

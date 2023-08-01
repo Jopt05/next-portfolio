@@ -85,6 +85,55 @@
 	border-color: #EE5A41;
 }
 
+.container__actions {
+    display: flex;
+    padding: 10px 15px;
+    justify-content: flex-end;
+}
+
+.container__actions_button {
+	position: relative;
+	padding: 10px 12px;
+	align-self: center;
+	color: white;
+	background-color: #EE5A41;
+	border: none;
+	cursor: pointer;
+    border-radius: 8px;
+    transition: all .2s ease-in-out;
+    margin-left: 5px;
+}
+
+.container__actions_button:hover {
+	background-color: #d53013;
+}
+
+.container__actions_second {
+	position: relative;
+	padding: 10px 12px;
+	align-self: center;
+	color: gray;
+	background-color: whitesmoke;
+	border: 2px solid gray;
+	cursor: pointer;
+    border-radius: 8px;
+    transition: all .2s ease-in-out;
+    margin-left: 5px;
+}
+
+.container__errors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0px;
+    gap: 5px
+}
+
+.container__errors_error {
+    text-align: center;
+    color: red;
+}
+
 @media only screen and (max-width: 550px) {
     .container {
         flex-direction: column;
