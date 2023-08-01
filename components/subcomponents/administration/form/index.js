@@ -168,7 +168,7 @@ export const Form = ({
                                         multiple
                                     >
                                         {
-                                            technologies.map(element => (
+                                            technologies.map(element, index => (
                                                 <option
                                                     className={
                                                         `
@@ -177,6 +177,7 @@ export const Form = ({
                                                         `}
                                                     value={element._id}
                                                     onClick={() => handleSelect(element)}
+                                                    key={index}
                                                     >
                                                         {element.tech_name}
                                                 </option>
@@ -203,7 +204,7 @@ export const Form = ({
             <div className={styles.container__errors}>
                     {
                         errors.length > 0 
-                        && errors.map(element => <p className={styles.container__errors_error}>{element}</p>)
+                        && errors.map(element, index => <p key={index} className={styles.container__errors_error}>{element}</p>)
                     }{
                         isCompleted && <p className={styles.container__completed}>Proceso completado!</p>
                     }

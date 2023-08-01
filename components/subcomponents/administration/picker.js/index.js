@@ -106,8 +106,8 @@ export const Picker = ({data, name, title}) => {
                     <img src='/images/imgs/loader.svg' />
                 </div>
                 {
-                    data.map((element) => (
-                            <div className={styles.container__menu_item}>
+                    data.map((element, index) => (
+                            <div key={index} className={styles.container__menu_item}>
                                 <p 
                                     className={styles.container__menu_title}
                                     onClick={() => handleEdit(element, schema[title])}
