@@ -70,6 +70,7 @@ export const Form = ({
 
             if( response.errors ) {
                 setErrors(response.errors.map(element => element.msg));
+                return
             };
 
             console.log(response);
