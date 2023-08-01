@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import styles from './Form.module.css';
 import { createdContext } from '../../../../hoc/createContext';
+import { useRouter } from 'next/router';
 
 export const Form = ({
     title,
@@ -9,11 +10,13 @@ export const Form = ({
     schema
 }) => {
 
+    const router = useRouter();
+
     const { technologies, setIsCreating, setIsEditing } = useContext(createdContext);
 
     const [information, setInformation] = useState({});
     const [errors, setErrors] = useState([])
-    const [isLoading, setIsLoading] = useState(false);
+    const [isCompleted, setIsCompleted] = useState(false);
 
     function handleChange(e) {
         if( e.target.type == 'checkbox' ) {
@@ -40,7 +43,6 @@ export const Form = ({
     };
 
     function handleAction(e) {
-        setIsLoading(true);
         const first_key = Object.keys(schema)[0];
         let data = information;
         if( data?.project_tecnologies ) {
@@ -71,7 +73,15 @@ export const Form = ({
             };
 
             console.log(response);
-            setIsLoading(false);
+            setIsCompleted(true);
+
+            setTimeout(() => {
+                setIsCompleted(false);
+                setInformation({});
+                setIsCreating(false);
+                setIsEditing(false);
+                setErrors([]);
+            }, 1500);
         })
         .catch(err => console.log(err));
     };
@@ -92,6 +102,30 @@ export const Form = ({
             project_tecnologies: actualOptions
         })
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if ( token == null ) router.push("/login");
+
+        fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/usuarios/auth`,{
+                method: "POST",
+                body: JSON.stringify({
+                    "token": token
+                }),
+                headers: { "Content-Type": "application/json" },
+            }
+        ).then(response => response.json())
+        .then(response => {
+            console.log(response)
+            if(response.msg && response.msg.includes("correctamente")) {
+                console.log("Logeado");
+            } else {
+                router.push("/administration/login");
+            }
+        })
+    }, [])
 
     useEffect(() => {
         if ( element == {} & schema == {} ) return;
@@ -170,6 +204,8 @@ export const Form = ({
                     {
                         errors.length > 0 
                         && errors.map(element => <p className={styles.container__errors_error}>{element}</p>)
+                    }{
+                        isCompleted && <p className={styles.container__completed}>Proceso completado!</p>
                     }
             </div>
             {

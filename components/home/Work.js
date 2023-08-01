@@ -16,7 +16,8 @@ export const Work = () => {
             .then((response) => {
 
                 if(response.projects) {
-                    setWork(response.projects)
+                    let projects = response.projects.filter(element => element.project_state == true);
+                    setWork(projects);
                     console.log(response)
                     setIsLoading(false);
                     return;

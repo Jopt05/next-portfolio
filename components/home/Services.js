@@ -17,7 +17,9 @@ export const Services = () => {
             .then((response) => {
 
                 if (response.services) {
-                    setServices(response.services);
+                    let services = response.services.filter(element => element.service_state == true);
+
+                    setServices(services);
                     setIsLoading(false);
                     return;
                 } 
