@@ -107,7 +107,7 @@ export const Form = ({
     useEffect(() => {
         const token = localStorage.getItem("token");
 
-        if ( token == null ) router.push("/login");
+        if ( token == null ) router.push("/administration/login");
 
         fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/api/usuarios/auth`,{
@@ -129,14 +129,16 @@ export const Form = ({
     }, [])
 
     useEffect(() => {
-        if ( element == {} & schema == {} ) return;
+        if ( element == null & schema == null ) return;
 
-        if( element == {} ) {
+        if( element == null ) {
             setInformation(
                 schema
             );
             return;
         }
+
+        document.querySelector('.anchor_point').scrollIntoView();
 
         setInformation(
             element
@@ -150,7 +152,7 @@ export const Form = ({
                     {title}
                 </p>
             </div>
-            <div className={styles.container__body}>
+            <div className={`${styles.container__body} anchor_point`}>
                 <p className={`${styles.container__body_placeholder} ${mainState && styles.container__body_placeholder_deactivated}`}>
                     Selecciona una accion para iniciar
                 </p>
