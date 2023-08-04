@@ -129,7 +129,7 @@ export const Form = ({
     }, [])
 
     useEffect(() => {
-        if ( element == null & schema == null ) return;
+        if ( element == null && schema == null ) return;
 
         if( element == null ) {
             setInformation(
