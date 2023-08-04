@@ -43,6 +43,7 @@
 .container__body_form {
     display: flex;
     padding: 10px 5px;
+    min-height: 150px;
     width: 100%;
     flex-direction: column;
     border-radius: 2px;

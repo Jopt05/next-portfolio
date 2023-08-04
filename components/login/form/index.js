@@ -41,7 +41,9 @@ export const Form = () => {
                 if (response.token) {
                     setSuccessfull(true);
                     localStorage.setItem('token', response.token);
-                    router.push('/administration');
+                    setTimeout(() => {
+                        router.push('/administration');
+                    }, 1500);
                     return
                 }
 
