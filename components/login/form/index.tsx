@@ -2,16 +2,44 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './Form.module.css'
 import { useRouter } from 'next/router';
 
+interface IForm {
+    user_name: string;
+    password: string;
+}
+
+interface IErrorResponse {
+    msg: string;
+    param: string;
+    location: string;
+}
+
+interface IError {
+    
+}
+
+// {
+//     "errors": [
+//         {
+//             "msg": "Message must be filled!",
+//             "param": "message",
+//             "location": "body"
+//         }
+//     ]
+// }
+
 export const Form = () => {
 
     const router = useRouter();
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [form, setForm] = useState({});
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [form, setForm] = useState<IForm>({
+        user_name: '',
+        password: ''
+    });
     const [errors, setErrors] = useState([]);
-    const [successfull, setSuccessfull] = useState(false);
+    const [successfull, setSuccessfull] = useState<boolean>(false);
 
-    function handleChange(e) {
+    function handleChange(e: Event) {
         setForm({
             ...form,
             [e.target.name]: e.target.value

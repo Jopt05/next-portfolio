@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
+
 import { useClass } from '../../hooks/useClass'
 import { ContactForm } from '../subcomponents/home/ContactForm'
 
 export const Contact = () => {
 
-    const refForm = useRef(null)
-    
+    const refForm = useRef<HTMLFormElement>(null)
+
     const [ Classes, setClasses, handleGoToForm ] = useClass(refForm);
     
     const { nameClass, formAnim } = Classes;
@@ -20,7 +21,7 @@ export const Contact = () => {
     }, [formAnim])
 
     return (
-        <VisibilitySensor partialVisibility onChange={ (isVisible) => isVisible ? setClasses( { ...Classes, nameClass: "animate__animated animate__bounceInLeft" } ) : console.log("")} >
+        <VisibilitySensor partialVisibility onChange={ (isVisible: boolean) => isVisible ? setClasses( { ...Classes, nameClass: "animate__animated animate__bounceInLeft" } ) : console.log("")} >
         <div className="contact">
             <div className={ "services__box container margin2 " + nameClass }>
                 <img className="contact__image" src="/images/imgs/item5.png" alt="user" />

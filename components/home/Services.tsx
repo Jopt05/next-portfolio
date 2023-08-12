@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
 
+import { IService } from '../../interfaces';
+
+interface INameClass {
+    nameClass: string;
+}
+
 export const Services = () => {
     // Coment
 
-    const [state, setState] = useState( { nameClass: 'none' } )
+    const [state, setState] = useState<INameClass>( { nameClass: 'none' } );
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    const [services, setServices] = useState([]);
+    const [services, setServices] = useState<IService[]>([]);
 
     useEffect(() => {
         let url = process.env.NEXT_PUBLIC_API_URL;
@@ -18,7 +24,7 @@ export const Services = () => {
             .then((response) => {
 
                 if (response.services) {
-                    let services = response.services.filter(element => element.service_state == true);
+                    let services = response.services.filter((service: IService) => service.service_state == true);
 
                     setServices(services);
                     setIsLoading(false);
@@ -32,7 +38,7 @@ export const Services = () => {
 
     }, [])
 
-    const handleChange = (isVisible) => {
+    const handleChange = (isVisible: boolean) => {
         isVisible 
             ? setState({ nameClass: 'animate__animated animate__bounceInLeft' }) 
             : console.log("There was a problem in handleChange")
@@ -50,14 +56,14 @@ export const Services = () => {
                 )
             }
             {
-                services.length > 0 && services.map((ITEM, INDEX) => (
-                    <div key={INDEX} className={ `services__box ${INDEX % 2 == 0 ? 'margin1' : 'margin3'} container ` + state.nameClass }>
+                services.length > 0 && services.map((service: IService, i: number) => (
+                    <div key={i} className={ `services__box ${i % 2 == 0 ? 'margin1' : 'margin3'} container ` + state.nameClass }>
                         <div className="services__box-1">
-                            <i className={`icon bx ${ITEM.service_topic == 0 ? 'bx-devices' : 'bx-code-alt'}`}></i>
-                            <p className="subtitle">{ ITEM.service_name }</p>
-                            <p className="plainText">{ ITEM.service_description }</p>
+                            <i className={`icon bx ${service.service_topic == 0 ? 'bx-devices' : 'bx-code-alt'}`}></i>
+                            <p className="subtitle">{ service.service_name }</p>
+                            <p className="plainText">{ service.service_description }</p>
                         </div>
-                        <img className="imgS" src={ ITEM.service_image } alt="Frontend development" />
+                        <img className="imgS" src={ service.service_image } alt="Frontend development" />
                     </div>
                 ))
             }

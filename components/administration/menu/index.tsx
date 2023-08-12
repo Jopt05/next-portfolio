@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Menu.module.css'
-import { Picker } from '../../subcomponents/administration/picker.js';
+import { Picker } from '../../subcomponents/administration/picker.js/index.jsx';
 
 export const Menu = ({ data }) => {
 

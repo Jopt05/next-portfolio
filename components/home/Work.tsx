@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
+
+import { IWork } from '../../interfaces';
+
 import { getTopic } from '../../utilities/functions';
 import ServicesBox from '../subcomponents/home/ServicesBox';
 
 export const Work = () => {
 
-    const [work, setWork] = useState([]);
+    const [work, setWork] = useState<IWork[]>([]);
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         let url = process.env.NEXT_PUBLIC_API_URL;
@@ -16,9 +19,8 @@ export const Work = () => {
             .then((response) => {
 
                 if(response.projects) {
-                    let projects = response.projects.filter(element => element.project_state == true);
+                    let projects = response.projects.filter((project: IWork) => project.project_state == true);
                     setWork(projects);
-                    console.log(response)
                     setIsLoading(false);
                     return;
                 }
@@ -38,14 +40,14 @@ export const Work = () => {
                     )
                 }
                 {
-                    work.length > 0 && work.map((ITEM, INDEX) => (
+                     work.length > 0 && work.map((project: IWork, i: number) => (
                         <ServicesBox  
-                            key={INDEX}
-                            icon={getTopic(ITEM.project_topic)} 
-                            subtitle={ITEM.project_name} 
-                            plainText={ITEM.project_description} 
-                            technologies={ITEM.project_tecnologies.map((item)=>item.tech_name)} 
-                            url={ITEM.project_url} 
+                            key={i}
+                            icon={getTopic(project.project_topic)} 
+                            subtitle={project.project_name} 
+                            plainText={project.project_description} 
+                            technologies={project.project_tecnologies.map((item)=>item.tech_name)} 
+                            url={project.project_url} 
                         />
                     ))
                 }

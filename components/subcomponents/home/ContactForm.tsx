@@ -1,6 +1,15 @@
+import { Dispatch, RefObject, SetStateAction } from 'react';
 import { useForm } from '../../../hooks/useForm'
+import { ISetClass } from '../../../interfaces';
 
-export const ContactForm = ({ formAnim, refForm, Classes, setClasses }) => {
+interface ComponentProps {
+    formAnim: string;
+    refForm: RefObject<HTMLFormElement>;
+    Classes: ISetClass
+    setClasses: Dispatch<SetStateAction<ISetClass>>
+}
+
+export const ContactForm = ({ formAnim, refForm, Classes, setClasses }: ComponentProps) => {
 
     const [ handleSubmit, form, setForm, IsLoading ] = useForm();
 
@@ -12,8 +21,8 @@ export const ContactForm = ({ formAnim, refForm, Classes, setClasses }) => {
             <label htmlFor="mail">Email</label>
             <input type="text" id="mail" name="visitor_email" value={ form.email } onChange={ e => setForm({ ...form, email: e.target.value }) } />
             <label htmlFor="message">Message</label>
-            <textarea id="message" name="visitor_message"  cols="30" rows="10" width="100%" value={ form.message } onChange={ e => setForm({ ...form, message: e.target.value }) }></textarea>
-            <p className="errorMessage">{form?.errors[0]}</p>
+            <textarea id="message" name="visitor_message"  cols={30} rows={10} data-width="100%" value={ form.message } onChange={ e => setForm({ ...form, message: e.target.value }) }></textarea>
+            <p className="errorMessage">{ form?.errors?.[0] }</p>
             <button type="submit">
                 {
                     IsLoading

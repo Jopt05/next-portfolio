@@ -1,20 +1,32 @@
-import React, { useState } from 'react'
+import React, { Dispatch, FormEventHandler, SetStateAction, useState } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { ISetClass } from '../interfaces';
+
+interface IForm {
+    name: string;
+    email: string;
+    message: string;
+    errors?: string[];
+}
 
 export const useForm = () => {
 
-    const [form, setForm] = useState({
+    const [form, setForm] = useState<IForm>({
         name: '',
         email: '',
         message: '',
         errors: [],
     })
 
-    const [IsLoading, setIsLoading] = useState(false);
+    const [IsLoading, setIsLoading] = useState<boolean>(false);
 
-    const handleSubmit = async(event, Classes, setClasses) => {
-        event.preventDefault();
+    const handleSubmit = async(
+        event: React.FormEvent<HTMLFormElement>, 
+        Classes: ISetClass, 
+        setClasses: Dispatch<SetStateAction<ISetClass>>, 
+        ) => {
+            event.preventDefault();
 
         let listOfErrors = [];
 
@@ -77,6 +89,6 @@ export const useForm = () => {
         })
     }
 
-    return [ handleSubmit, form, setForm, IsLoading, setIsLoading ];
+    return [ handleSubmit, form, setForm, IsLoading, setIsLoading ] as const;
 
 }
