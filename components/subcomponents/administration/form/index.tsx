@@ -2,21 +2,29 @@ import React, {useState, useEffect, useContext} from 'react';
 import styles from './Form.module.css';
 import { createdContext } from '../../../../hoc/createContext';
 import { useRouter } from 'next/router';
+import { ICreateContext, ISchema, IWorkingElement } from '../../../../interfaces';
+
+interface ComponenProps {
+    title: string;
+    mainState: boolean;
+    element: IWorkingElement;
+    schema: ISchema | null
+}
 
 export const Form = ({
     title,
     mainState,
     element,
     schema
-}) => {
+}: ComponenProps) => {
 
     const router = useRouter();
 
-    const { technologies, setIsCreating, setIsEditing } = useContext(createdContext);
+    const { technologies, setIsCreating, setIsEditing } = useContext(createdContext) as ICreateContext;
 
-    const [information, setInformation] = useState({});
+    const [information, setInformation] = useState(null);
     const [errors, setErrors] = useState([])
-    const [isCompleted, setIsCompleted] = useState(false);
+    const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
     function handleChange(e) {
         if( e.target.type == 'checkbox' ) {

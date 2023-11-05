@@ -1,10 +1,17 @@
 import React from 'react';
 import styles from './Header.module.css';
 import { Metric } from '../../subcomponents/administration/metric';
+import { IProyect, IService, ITech } from '../../../interfaces';
 
-export const Header = ({
-    data
-}) => {
+interface ComponentProps {
+    data: {
+        services: IService[],
+        projects: IProyect[],
+        technologies: ITech[]
+    }
+}
+
+export const Header = ({data}: ComponentProps) => {
     return (
         <>
             <div className={styles.header}>

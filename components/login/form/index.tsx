@@ -13,20 +13,6 @@ interface IErrorResponse {
     location: string;
 }
 
-interface IError {
-    
-}
-
-// {
-//     "errors": [
-//         {
-//             "msg": "Message must be filled!",
-//             "param": "message",
-//             "location": "body"
-//         }
-//     ]
-// }
-
 export const Form = () => {
 
     const router = useRouter();
@@ -36,17 +22,17 @@ export const Form = () => {
         user_name: '',
         password: ''
     });
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState<string[]>([]);
     const [successfull, setSuccessfull] = useState<boolean>(false);
 
-    function handleChange(e: Event) {
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setForm({
             ...form,
             [e.target.name]: e.target.value
         });
     };
 
-    function handleSubmit(e) {
+    function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
         console.log("enviado")
 
@@ -63,7 +49,6 @@ export const Form = () => {
         )
             .then((response) => response.json())
             .then((response) => {
-                console.log(response);
                 setIsLoading(false);
 
                 if (response.token) {
@@ -76,16 +61,9 @@ export const Form = () => {
                 }
 
                 if (response.errors) {
-                    setErrors(response.errors.map((element) => element.msg));
+                    setErrors(response.errors.map((element: IErrorResponse) => element.msg));
                     setSuccessfull(false);
                     return
-                }
-
-                if (response.msg) {
-                    setErrors([
-                        msg
-                    ]);
-                    setSuccessfull(false);
                 }
 
                 setErrors([]);

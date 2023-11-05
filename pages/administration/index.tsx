@@ -4,17 +4,18 @@ import { Header } from '../../components/administration/header';
 import { Menu } from '../../components/administration/menu';
 import { Forms } from '../../components/administration/forms';
 import { createdContext } from '../../hoc/createContext';
+import { IProyect, ISchema, IService, ITech, IWorkingElement } from '../../interfaces';
 
 export default function Administration() {
 
-  const [projects, setProjects] = useState([]);
-  const [services, setServices] = useState([]);
-  const [technologies, setTechnologies] = useState([]);
+  const [projects, setProjects] = useState<IProyect[]>([]);
+  const [services, setServices] = useState<IService[]>([]);
+  const [technologies, setTechnologies] = useState<ITech[]>([]);
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [isCreating, setIsCreating] = useState(false);
-  const [workingElement, setWorkingElement] = useState({});
-  const [schema, setSchema] = useState({});
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [isCreating, setIsCreating] = useState<boolean>(false);
+  const [workingElement, setWorkingElement] = useState<IWorkingElement>(null);
+  const [schema, setSchema] = useState<ISchema | null>(null);
 
   useEffect(() => {
     fetch(
